@@ -18,8 +18,4 @@ public class IdentityCardService extends BaseServiceCustom<IdentityCard, Identit
         super(repo);
     }
 
-    @Override
-    public List<IdentityCardDTO> getAllPaged(int page, int size){
-        return repo.getPagedAll(page, size).stream().map(e-> DtoTools.convert(e, IdentityCardDTO.class)).toList();
-    }
 }
