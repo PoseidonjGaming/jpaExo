@@ -31,6 +31,11 @@ public class BaseRepo<Entity extends IdForm> implements IBaseRepo<Entity> {
     }
 
     @Override
+    public List<Entity> getPagedAll(int page, int size) {
+        return manager.createQuery("select e from " + table + " e", entityClass).setFirstResult(page*size).setMaxResults(size).getResultList();
+    }
+
+    @Override
     public Entity getById(String uuid, boolean isLast) {
         return manager.createQuery("from ? e where e.id=?", entityClass).setParameter(1, table).setParameter(2, uuid).getSingleResult();
     }

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class BaseServiceCustom<Entity extends IdForm, DTO> implements IBaseService<Entity, DTO, String> {
 
-    private IBaseRepo<Entity> repo;
+    protected IBaseRepo<Entity> repo;
     private Class<DTO> dtoClass;
     private Class<Entity> entityClass;
     public BaseServiceCustom(IBaseRepo<Entity> repo) {

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class GenericController<Entity, DTO, ID> {
 
-    private final IBaseService<Entity, DTO, ID> service;
+    protected final IBaseService<Entity, DTO, ID> service;
 
 
     public GenericController(IBaseService<Entity, DTO, ID> service, Class<DTO> dtoClass, Class<Entity> entityClass) {
