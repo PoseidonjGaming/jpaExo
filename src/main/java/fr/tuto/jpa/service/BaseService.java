@@ -38,6 +38,11 @@ public class BaseService<Entity, DTO, ID> implements IBaseService<Entity, DTO, I
     }
 
     @Override
+    public List<DTO> getAllPaged(int page, int size) {
+        return repo.findAll().stream().map(e->DtoTools.convert(e, dtoClass)).toList();
+    }
+
+    @Override
     public void createOrUpdate(DTO dto) {
         repo.save(DtoTools.convert(dto, entityClass));
     }

@@ -41,4 +41,9 @@ public class BaseServiceCustom<Entity extends IdForm, DTO> implements IBaseServi
     public void delete(String s) {
         repo.delete(s, true);
     }
+
+    @Override
+    public List<DTO> getAllPaged(int page, int size) {
+        return repo.getPagedAll(page, size).stream().map(e->DtoTools.convert(e, dtoClass)).toList();
+    }
 }

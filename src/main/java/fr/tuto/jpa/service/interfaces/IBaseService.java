@@ -1,5 +1,7 @@
 package fr.tuto.jpa.service.interfaces;
 
+import fr.tuto.jpa.dto.IdentityCardDTO;
+
 import java.util.List;
 
 public interface IBaseService<Entity, DTO, ID> {
@@ -12,4 +14,6 @@ public interface IBaseService<Entity, DTO, ID> {
     void createOrUpdate(DTO dto);
 
     void delete(ID id);
+
+    List<DTO> getAllPaged(int page, int size);
 }

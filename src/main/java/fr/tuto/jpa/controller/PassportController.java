@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/passport")
 public class PassportController extends GenericController<Passport, PassportDTO, String> {
-
     @Autowired
     public PassportController(IPassportService service) {
         super(service, PassportDTO.class, Passport.class);
