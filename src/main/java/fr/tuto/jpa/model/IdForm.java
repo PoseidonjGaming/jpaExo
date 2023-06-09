@@ -15,7 +15,7 @@ public abstract class IdForm implements Serializable {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String uuid;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate issued_at;
 
     public String getUuid() {

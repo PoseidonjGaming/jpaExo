@@ -28,8 +28,8 @@ public class GenericController<Entity, DTO, ID> {
         return ResponseEntity.ok(service.getById(id));
     }
 
-    @PostMapping(value = {"/{id}",""})
-    public ResponseEntity<DTO> createOrUpdate(@RequestBody DTO dto,@PathVariable(required = false) ID id) {
+    @PostMapping(value = {"/{id}", ""})
+    public ResponseEntity<DTO> createOrUpdate(@RequestBody DTO dto, @PathVariable(required = false) ID id) {
         service.createOrUpdate(dto, id);
         return ResponseEntity.noContent().build();
     }

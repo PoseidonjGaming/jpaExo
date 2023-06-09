@@ -9,7 +9,7 @@ public interface IBaseRepo<Entity, ID> {
 
     Entity getById(ID uuid, boolean isLast);
 
-    void saveOrUpdate(Entity entity, ID id,boolean isLast);
+    void saveOrUpdate(Entity entity, ID id, boolean isLast);
 
     void delete(ID uuid, boolean isLast);
 

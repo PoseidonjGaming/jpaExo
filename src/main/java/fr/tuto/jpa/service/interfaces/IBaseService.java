@@ -1,7 +1,5 @@
 package fr.tuto.jpa.service.interfaces;
 
-import fr.tuto.jpa.dto.IdentityCardDTO;
-
 import java.util.List;
 
 public interface IBaseService<Entity, DTO, ID> {

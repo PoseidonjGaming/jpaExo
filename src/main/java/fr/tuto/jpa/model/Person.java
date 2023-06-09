@@ -1,6 +1,5 @@
 package fr.tuto.jpa.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.io.Serializable;

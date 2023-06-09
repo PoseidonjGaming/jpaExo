@@ -1,6 +1,5 @@
 package fr.tuto.jpa.service;
 
-import fr.tuto.jpa.model.IdForm;
 import fr.tuto.jpa.repo.interfaces.IBaseRepo;
 import fr.tuto.jpa.service.interfaces.IBaseService;
 import fr.tuto.jpa.tools.DtoTools;
@@ -12,6 +11,7 @@ public class BaseServiceCustom<Entity, DTO, ID> implements IBaseService<Entity, 
     protected IBaseRepo<Entity, ID> repo;
     private Class<DTO> dtoClass;
     private Class<Entity> entityClass;
+
     public BaseServiceCustom(IBaseRepo<Entity, ID> repo) {
         this.repo = repo;
     }
@@ -24,7 +24,7 @@ public class BaseServiceCustom<Entity, DTO, ID> implements IBaseService<Entity, 
 
     @Override
     public List<DTO> getAll() {
-        return repo.getAll().stream().map(e-> DtoTools.convert(e, dtoClass)).toList();
+        return repo.getAll().stream().map(e -> DtoTools.convert(e, dtoClass)).toList();
     }
 
     @Override
@@ -34,7 +34,7 @@ public class BaseServiceCustom<Entity, DTO, ID> implements IBaseService<Entity, 
 
     @Override
     public void createOrUpdate(DTO dto, ID id) {
-        repo.saveOrUpdate(DtoTools.convert(dto,entityClass), id,true);
+        repo.saveOrUpdate(DtoTools.convert(dto, entityClass), id, true);
     }
 
     @Override
@@ -44,6 +44,6 @@ public class BaseServiceCustom<Entity, DTO, ID> implements IBaseService<Entity, 
 
     @Override
     public List<DTO> getAllPaged(int page, int size) {
-        return repo.getPagedAll(page, size).stream().map(e->DtoTools.convert(e, dtoClass)).toList();
+        return repo.getPagedAll(page, size).stream().map(e -> DtoTools.convert(e, dtoClass)).toList();
     }
 }

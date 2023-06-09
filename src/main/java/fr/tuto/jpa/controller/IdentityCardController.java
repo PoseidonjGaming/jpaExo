@@ -21,7 +21,7 @@ public class IdentityCardController extends GenericController<IdentityCard, Iden
     }
 
     @GetMapping("/paged")
-    public ResponseEntity<List<IdentityCardDTO>> getAllPaged(int page, int size){
+    public ResponseEntity<List<IdentityCardDTO>> getAllPaged(int page, int size) {
         return ResponseEntity.ok(service.getAllPaged(page, size));
     }
 }

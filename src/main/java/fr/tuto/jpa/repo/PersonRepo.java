@@ -1,30 +1,28 @@
 package fr.tuto.jpa.repo;
 
-import fr.tuto.jpa.dto.PersonDTO;
 import fr.tuto.jpa.model.Person;
 import fr.tuto.jpa.repo.interfaces.IPersonRepo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaDelete;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 @Repository
 @Transactional
 public class PersonRepo implements IPersonRepo {
 
+    protected final EntityManagerFactory factory;
+    private final CriteriaBuilder builder;
     @PersistenceContext
     private EntityManager manager;
-
-    protected final EntityManagerFactory factory;
-
-    private final CriteriaBuilder builder;
 
     public PersonRepo(EntityManagerFactory factory) {
         this.factory = factory;
@@ -59,12 +57,11 @@ public class PersonRepo implements IPersonRepo {
     }
 
     @Override
-    public void saveOrUpdate(Person person, Integer id,boolean isLast) {
+    public void saveOrUpdate(Person person, Integer id, boolean isLast) {
 
-        if(id==null){
+        if (id == null) {
             manager.persist(person);
-        }
-        else {
+        } else {
             manager.merge(person);
         }
 

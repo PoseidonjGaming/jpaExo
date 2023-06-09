@@ -8,11 +8,11 @@ import java.util.List;
 
 public class BaseService<Entity, DTO, ID> implements IBaseService<Entity, DTO, ID> {
 
-    private JpaRepository<Entity,ID> repo;
+    private JpaRepository<Entity, ID> repo;
     private Class<DTO> dtoClass;
     private Class<Entity> entityClass;
 
-    public BaseService(JpaRepository<Entity,ID> repo) {
+    public BaseService(JpaRepository<Entity, ID> repo) {
         this.repo = repo;
     }
 
@@ -39,7 +39,7 @@ public class BaseService<Entity, DTO, ID> implements IBaseService<Entity, DTO, I
 
     @Override
     public List<DTO> getAllPaged(int page, int size) {
-        return repo.findAll().stream().map(e->DtoTools.convert(e, dtoClass)).toList();
+        return repo.findAll().stream().map(e -> DtoTools.convert(e, dtoClass)).toList();
     }
 
     @Override
