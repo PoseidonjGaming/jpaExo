@@ -7,7 +7,7 @@ import fr.tuto.jpa.service.interfaces.IPersonService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PersonService extends BaseService<Person, PersonDTO, Integer> implements IPersonService {
+public class PersonService extends BaseServiceCustom<Person, PersonDTO, Integer> implements IPersonService {
     public PersonService(IPersonRepo repo) {
         super(repo);
     }

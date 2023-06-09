@@ -7,12 +7,12 @@ import fr.tuto.jpa.tools.DtoTools;
 
 import java.util.List;
 
-public class BaseServiceCustom<Entity extends IdForm, DTO> implements IBaseService<Entity, DTO, String> {
+public class BaseServiceCustom<Entity, DTO, ID> implements IBaseService<Entity, DTO, ID> {
 
-    protected IBaseRepo<Entity> repo;
+    protected IBaseRepo<Entity, ID> repo;
     private Class<DTO> dtoClass;
     private Class<Entity> entityClass;
-    public BaseServiceCustom(IBaseRepo<Entity> repo) {
+    public BaseServiceCustom(IBaseRepo<Entity, ID> repo) {
         this.repo = repo;
     }
 
@@ -28,17 +28,17 @@ public class BaseServiceCustom<Entity extends IdForm, DTO> implements IBaseServi
     }
 
     @Override
-    public DTO getById(String s) {
+    public DTO getById(ID s) {
         return DtoTools.convert(repo.getById(s, true), dtoClass);
     }
 
     @Override
-    public void createOrUpdate(DTO dto) {
-        repo.saveOrUpdate(DtoTools.convert(dto,entityClass), true);
+    public void createOrUpdate(DTO dto, ID id) {
+        repo.saveOrUpdate(DtoTools.convert(dto,entityClass), id,true);
     }
 
     @Override
-    public void delete(String s) {
+    public void delete(ID s) {
         repo.delete(s, true);
     }
 

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Transactional
-public class IdentityCardRepo extends BaseRepo<IdentityCard> implements IIdentityCardRepo {
+public class IdentityCardRepo extends BaseRepo<IdentityCard, String> implements IIdentityCardRepo {
 
     public IdentityCardRepo() {
         super(IdentityCard.class);

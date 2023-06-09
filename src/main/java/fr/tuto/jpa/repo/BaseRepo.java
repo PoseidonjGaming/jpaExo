@@ -7,7 +7,7 @@ import jakarta.persistence.PersistenceContext;
 
 import java.util.List;
 
-public class BaseRepo<Entity extends IdForm> implements IBaseRepo<Entity> {
+public class BaseRepo<Entity, ID> implements IBaseRepo<Entity, ID> {
 
 
     protected final Class<Entity> entityClass;
@@ -36,13 +36,13 @@ public class BaseRepo<Entity extends IdForm> implements IBaseRepo<Entity> {
     }
 
     @Override
-    public Entity getById(String uuid, boolean isLast) {
+    public Entity getById(ID uuid, boolean isLast) {
         return manager.createQuery("from ? e where e.id=?", entityClass).setParameter(1, table).setParameter(2, uuid).getSingleResult();
     }
 
     @Override
-    public void saveOrUpdate(Entity entity, boolean isLast) {
-        if (entity.getUuid()==null) {
+    public void saveOrUpdate(Entity entity,ID id, boolean isLast) {
+        if (id==null) {
             manager.persist(entity);
         } else {
             manager.merge(entity);
@@ -50,7 +50,7 @@ public class BaseRepo<Entity extends IdForm> implements IBaseRepo<Entity> {
     }
 
     @Override
-    public void delete(String uuid, boolean isLast) {
+    public void delete(ID uuid, boolean isLast) {
         manager.remove(getById(uuid, isLast));
     }
 

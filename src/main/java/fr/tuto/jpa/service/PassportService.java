@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PassportService extends BaseServiceCustom<Passport, PassportDTO> implements IPassportService {
+public class PassportService extends BaseServiceCustom<Passport, PassportDTO, String> implements IPassportService {
 
     @Autowired
     public PassportService(IPassportRepo repo) {

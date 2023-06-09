@@ -11,7 +11,7 @@ public interface IBaseService<Entity, DTO, ID> {
 
     DTO getById(ID id);
 
-    void createOrUpdate(DTO dto);
+    void createOrUpdate(DTO dto, ID id);
 
     void delete(ID id);
 

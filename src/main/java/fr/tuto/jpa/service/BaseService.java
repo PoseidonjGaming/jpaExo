@@ -43,7 +43,7 @@ public class BaseService<Entity, DTO, ID> implements IBaseService<Entity, DTO, I
     }
 
     @Override
-    public void createOrUpdate(DTO dto) {
+    public void createOrUpdate(DTO dto, ID id) {
         repo.save(DtoTools.convert(dto, entityClass));
     }
 

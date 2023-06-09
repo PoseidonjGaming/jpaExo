@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Transactional
-public class PassportRepo extends BaseRepo<Passport> implements IPassportRepo {
+public class PassportRepo extends BaseRepo<Passport, String> implements IPassportRepo {
     public PassportRepo() {
         super(Passport.class);
     }

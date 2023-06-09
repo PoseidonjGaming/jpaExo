@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class IdentityCardService extends BaseServiceCustom<IdentityCard, IdentityCardDTO> implements IIdentityCardService {
+public class IdentityCardService extends BaseServiceCustom<IdentityCard, IdentityCardDTO, String> implements IIdentityCardService {
 
     @Autowired
     public IdentityCardService(IIdentityCardRepo repo) {
